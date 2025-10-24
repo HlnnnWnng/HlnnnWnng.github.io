@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qian shu (Helen) Wang — Personal Website</title>
+  <meta name="description" content="MPhil student at the University of Cambridge focused on Human–Computer Interaction, Responsible/Trustworthy AI, and Human–AI collaboration." />
+  <meta name="author" content="Qian shu (Helen) Wang" />
+  <meta property="og:title" content="Qian shu (Helen) Wang" />
+  <meta property="og:description" content="Human–Computer Interaction • Responsible AI • Human–AI Collaboration" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://HlnnnWnng.github.io" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #111218;
+      --text: #e6e6e6;
+      --muted: #a8b0b8;
+      --accent: #6dd3ff;
+      --accent-2: #a78bfa; /* soft purple */
+      --ring: rgba(109, 211, 255, 0.45);
+      --border: #22252e;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #fbfcfe;
+        --card: #ffffff;
+        --text: #0b0c10;
+        --muted: #5c6470;
+        --accent: #005cbb;
+        --accent-2: #7c3aed;
+        --ring: rgba(0,92,187,.2);
+        --border: #e8ebf0;
+        --shadow: 0 8px 24px rgba(10, 37, 64, .08);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6; letter-spacing: .2px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container { max-width: 1100px; padding: 24px; margin: 0 auto; }
+    header.site {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0;
+    }
+    .brand { font-weight: 700; letter-spacing: .3px; }
+    .brand small { opacity: .7; font-weight: 500; }
+    .nav a.link { padding: 8px 12px; border-radius: 10px; }
+    .nav a.link:hover { background: color-mix(in oklab, var(--card) 88%, transparent); text-decoration: none; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px;
+      border: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, transparent), var(--card));
+      box-shadow: var(--shadow);
+      color: var(--text); text-decoration: none; font-weight: 600;
+    }
+    .btn:hover { outline: 3px solid var(--ring); text-decoration: none; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; padding: 34px 0 12px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+    .title { font-size: clamp(28px, 4vw, 44px); line-height: 1.15; margin: 0 0 8px; }
+    .tagline { font-size: clamp(16px, 2vw, 18px); color: var(--muted); margin: 0 0 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 22px; }
+    .chip { font-size: 13px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); }
+
+    .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 14px; }
+    .contact-item { display: flex; align-items: center; gap: 10px; border: 1px dashed var(--border); border-radius: 12px; padding: 10px 12px; }
+    .contact-item svg { width: 18px; height: 18px; opacity: .75; }
+
+    /* Sections */
+    section { margin: 34px 0; }
+    h2 { font-size: clamp(20px, 3vw, 28px); margin: 0 0 14px; }
+
+    /* Grid blocks */
+    .grid { display: grid; gap: 16px; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    /* Cards */
+    .edu-card .meta { color: var(--muted); font-size: 14px; margin-top: 6px; }
+    .edu-card .badge { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--text); background: linear-gradient(90deg, var(--accent), var(--accent-2)); padding: 6px 10px; border-radius: 999px; }
+
+    .exp-card h3 { margin: 0; font-size: 18px; }
+    .exp-card .role { color: var(--muted); margin: 4px 0 10px; font-size: 14px; }
+    .exp-card ul { margin: 8px 0 0 20px; }
+    .exp-card li { margin: 6px 0; }
+
+    .skills { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .pill { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; margin: 6px 6px 0 0; font-size: 13px; color: var(--muted); }
+
+    footer { margin: 50px 0 20px; color: var(--muted); font-size: 14px; text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .grid.three { grid-template-columns: 1fr; } .grid.two { grid-template-columns: 1fr; } .skills { grid-template-columns: 1fr; } }
+
+    /* Print (for saving as PDF) */
+    @media print { header.site { position: static; border: none; } a { color: inherit; } .btn, .nav .link { display: none !important; } body { background: white; } .card { box-shadow: none; } }
+  </style>
+  <script>
+    // Minimal dark/light preference toggle preserved in localStorage
+    const theme = localStorage.getItem('theme');
+    if (theme === 'light') document.documentElement.style.colorScheme = 'light';
+    if (theme === 'dark') document.documentElement.style.colorScheme = 'dark';
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Qian shu (Helen) Wang",
+    "email": "mailto:qsw20@cam.ac.uk",
+    "telephone": "+447500925929",
+    "url": "https://HlnnnWnng.github.io",
+    "sameAs": [
+      "https://www.linkedin.com/in/helen-wang-cambridge/",
+      "https://github.com/HlnnnWnng"
+    ],
+    "alumniOf": [
+      {"@type":"CollegeOrUniversity","name":"University of Cambridge"},
+      {"@type":"CollegeOrUniversity","name":"University of Edinburgh"}
+    ],
+    "knowsAbout": ["Human-Computer Interaction","Responsible AI","Human–AI collaboration","Usable Security","AR/VR","Reinforcement Learning"]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="visually-hidden">Skip to content</a>
+  <header class="site">
+    <div class="container nav">
+      <div class="brand">Qian shu (Helen) Wang <small>— HCI × AI</small></div>
+      <nav aria-label="Primary">
+        <a class="link" href="#about">About</a>
+        <a class="link" href="#education">Education</a>
+        <a class="link" href="#experience">Research</a>
+        <a class="link" href="#skills">Skills</a>
+        <button class="link" id="themeToggle" title="Toggle color scheme" style="cursor:pointer;border:none;background:none">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- Hero / Intro -->
+    <section id="about" class="hero">
+      <div class="card">
+        <h1 class="title">Qian shu (Helen) Wang</h1>
+        <p class="tagline">MPhil student at the University of Cambridge. I design and build human-centered AI systems with a focus on <strong>HCI</strong>, <strong>Responsible/Trustworthy AI</strong>, and <strong>Human–AI collaboration</strong>.</p>
+        <div class="chips" aria-label="Interests">
+          <span class="chip">Usable Security & Privacy</span>
+          <span class="chip">AR/VR & Social VR</span>
+          <span class="chip">Reinforcement Learning</span>
+          <span class="chip">Conversational AI</span>
+        </div>
+        <div class="contact-grid">
+          <a class="contact-item" href="mailto:qsw20@cam.ac.uk" aria-label="Email">
+            <!-- mail icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            <span>qsw20@cam.ac.uk</span>
+          </a>
+          <a class="contact-item" href="tel:+447500925929" aria-label="Phone">
+            <!-- phone icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.78.57 2.63a2 2 0 0 1-.45 2.11L8 9a16 16 0 0 0 7 7l.54-.23a2 2 0 0 1 2.11.45c.85.25 1.73.45 2.63.57A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+44 7500 925929</span>
+          </a>
+          <a class="contact-item" href="https://www.linkedin.com/in/helen-wang-cambridge/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+            <!-- linkedin icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4zM8 8h3.8v2.05h.05c.53-1 1.82-2.05 3.75-2.05C19.4 8 21 10 21 13.42V23h-4v-8.3c0-1.98-.03-4.52-2.75-4.52-2.75 0-3.17 2.15-3.17 4.37V23H7.98z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a class="contact-item" href="https://github.com/HlnnnWnng" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+            <!-- github icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.78.42-1.32.76-1.63-2.67-.3-5.47-1.33-5.47-5.91 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.8 5.6-5.48 5.9.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z" clip-rule="evenodd"/></svg>
+            <span>@HlnnnWnng</span>
+          </a>
+        </div>
+        <div style="margin-top:18px; display:flex; gap:10px; flex-wrap: wrap;">
+          <a class="btn" href="#education">View my background</a>
+          <a class="btn" href="#experience">See research</a>
+          <a class="btn" href="#skills">Skills</a>
+          <!-- Replace the href below with your hosted CV PDF if desired -->
+          <a class="btn" href="#" onclick="alert('Add your CV PDF and update this link.'); return false;">Download CV (PDF)</a>
+        </div>
+      </div>
+      <div class="card" aria-hidden="true" style="background: conic-gradient(from 180deg at 50% 50%, color-mix(in oklab, var(--accent) 40%, transparent), color-mix(in oklab, var(--accent-2) 35%, transparent), color-mix(in oklab, var(--accent) 20%, transparent)); min-height: 280px; display:flex; align-items:center; justify-content:center; border-style: dashed;">
+        <div style="text-align:center">
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight:600; font-size:14px; letter-spacing:.3px;">helen@cambridge:~$ whoami</div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size:40px; font-weight:700; margin-top:8px;">HCI × AI</div>
+          <div style="opacity:.7; margin-top:8px;">human‑centred · privacy‑aware · research‑driven</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="grid two">
+        <article class="card edu-card">
+          <h3>University of Cambridge — MPhil Human Inspired Artificial Intelligence</h3>
+          <div class="meta">Oct 2025 – Jun 2026 • To be completed</div>
+          <p style="margin-top:8px"><strong>Relevant courses:</strong> Algorithms for Human‑AI Collaboration, Responsible AI, Introduction to Human‑Inspired AI, Conversational AI Design and Development, AI for Social Science.</p>
+        </article>
+        <article class="card edu-card">
+          <h3>University of Edinburgh — BSc (Hons) Computer Science & Management Science</h3>
+          <div class="meta">Sep 2021 – Jun 2025 • Final Grade: <strong>78%</strong> (First Class Honours)</div>
+          <span class="badge" title="Awarded to the top performing student">Class Medal — Top Performing Student</span>
+          <p style="margin-top:8px"><strong>Relevant courses:</strong> Usable Security and Privacy, Human–Computer Interaction, Automatic Speech Recognition, Object‑Oriented Programming, Foundations of Data Science, Introduction to Algorithms and Data Structures.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Research / Experience -->
+    <section id="experience">
+      <h2>Research Experience</h2>
+      <div class="grid">
+        <article class="card exp-card">
+          <h3>Improving Access Control for Shared Objects in AR/VR Environments</h3>
+          <div class="role">Undergraduate Dissertation • University of Edinburgh • Sep 2024 – Present</div>
+          <ul>
+            <li>Conducted semi‑structured interviews with <strong>30 participants</strong> to explore user perspectives on access control, privacy, and security in multi‑user AR/VR platforms.</li>
+            <li>Applied thematic analysis to uncover expectations and concerns, translating results into user‑informed access control policies for shared virtual environments.</li>
+            <li>Implemented policies in a prototype access control system using <strong>C++</strong> and <strong>Unity</strong>.</li>
+          </ul>
+        </article>
+
+        <article class="card exp-card">
+          <h3>HOVER: Generalized Retargeting for Dexterous Manipulation</h3>
+          <div class="role">Research Intern • DexRobot • Shanghai, China • Jul 2025 – Sep 2025</div>
+          <ul>
+            <li>Reproduced dexterous hand training/evaluation for baselines; ran parameter sweeps to identify optimal configurations.</li>
+            <li>Designed a closed‑loop PPO‑based RL algorithm, achieving a <strong>15.3% AUC</strong> improvement over DexMachina and a task success rate &gt; 90% in controlled settings.</li>
+            <li>Integrated a neural network retargeting policy (<em>Retarget‑NN</em>) into the closed‑loop policy for real‑time adaptation.</li>
+            <li>Poster accepted at IROS 2025. See the <a href="https://daisydai008.github.io/iros-workshop/" target="_blank" rel="noreferrer noopener">project website</a> and <a href="https://github.com/HlnnnWnng/dexmachina_human_policy/tree/human-policy" target="_blank" rel="noreferrer noopener">GitHub repository</a>.</li>
+          </ul>
+        </article>
+
+        <article class="card exp-card">
+          <h3>Analyzing Code of Conduct Documents for Video Games Using BERT</h3>
+          <div class="role">Research Assistant • University of Edinburgh • Sep 2024 – Dec 2024</div>
+          <ul>
+            <li>Used INCEpTION for semantic annotation on 30+ CoC and ToS documents to create a high‑quality dataset for NLP analysis.</li>
+            <li>Reviewed model outputs and annotated misclassifications with likely failure reasons to refine the database.</li>
+            <li>Authored a literature review on video‑game Codes of Conduct, persuasive interaction design, and safety governance to inform annotation schema and evaluation.</li>
+          </ul>
+        </article>
+
+        <article class="card exp-card">
+          <h3>Security & Privacy in Identity Construction in the Metaverse</h3>
+          <div class="role">Junior Research Assistant • University of Edinburgh • May 2024 – Aug 2024</div>
+          <ul>
+            <li>Collected 500+ Reddit records with a custom PRAW‑based crawler; automated filtering with Boolean queries.</li>
+            <li>Applied thematic coding to analyze perceptions/behaviours and identify key patterns in security and privacy concerns.</li>
+            <li>Performed in‑depth analysis of 20+ records to surface trends and research opportunities.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="card">
+        <div class="skills">
+          <div>
+            <h3 style="margin-top:0">Programming</h3>
+            <div>
+              <span class="pill">Python</span>
+              <span class="pill">Java</span>
+              <span class="pill">SQL</span>
+              <span class="pill">C#</span>
+              <span class="pill">C++</span>
+              <span class="pill">R</span>
+            </div>
+          </div>
+          <div>
+            <h3 style="margin-top:0">Frameworks & Libraries</h3>
+            <div>
+              <span class="pill">PyTorch</span>
+              <span class="pill">NumPy</span>
+              <span class="pill">Matplotlib</span>
+              <span class="pill">Seaborn</span>
+              <span class="pill">Pandas</span>
+              <span class="pill">scikit‑learn</span>
+              <span class="pill">Spring Boot</span>
+              <span class="pill">MyBatis</span>
+              <span class="pill">JNA</span>
+            </div>
+          </div>
+          <div>
+            <h3 style="margin-top:0">3D Tools</h3>
+            <div>
+              <span class="pill">Blender</span>
+              <span class="pill">Unity3D</span>
+            </div>
+          </div>
+          <div>
+            <h3 style="margin-top:0">Languages</h3>
+            <div>
+              <span class="pill">English (Fluent)</span>
+              <span class="pill">Chinese (Native)</span>
+              <span class="pill">Italian (Native)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap: wrap;">
+        <div>
+          <strong>Open to collaborations</strong>
+          <div class="muted">I enjoy building usable, privacy‑aware AI systems and studying their real‑world impact.</div>
+        </div>
+        <div>
+          <a class="btn" href="mailto:qsw20@cam.ac.uk?subject=Hello%20Helen">Email me</a>
+          <a class="btn" href="https://github.com/HlnnnWnng" target="_blank" rel="noreferrer noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Qian shu (Helen) Wang · Built with HTML/CSS · Hosted on GitHub Pages
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const toggle = document.getElementById('themeToggle');
+    toggle?.addEventListener('click', () => {
+      const cs = getComputedStyle(document.documentElement).colorScheme;
+      const next = cs === 'dark' ? 'light' : 'dark';
+      document.documentElement.style.colorScheme = next;
+      localStorage.setItem('theme', next);
+    });
+  </script>
+</body>
+</html>

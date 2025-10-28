@@ -12,6 +12,24 @@
   <meta property="og:url" content="https://HlnnnWnng.github.io" />
   <meta name="twitter:card" content="summary" />
   <meta name="color-scheme" content="light dark" />
+  <!-- Cache control to reduce sticky caching on GitHub Pages/CDN -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <script>
+    // One-time cache buster: ensures a fresh fetch after you deploy updates
+    (function() {
+      var VERSION = '2025-10-28-1';
+      var url = new URL(window.location.href);
+      if (url.searchParams.get('v') !== VERSION) {
+        if (sessionStorage.getItem('page_version') !== VERSION) {
+          sessionStorage.setItem('page_version', VERSION);
+          url.searchParams.set('v', VERSION);
+          window.location.replace(url.toString());
+        }
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -151,7 +169,7 @@
         <a class="link" href="#experience">Research</a>
         <a class="link" href="#skills">Skills</a>
         <!-- Added direct CV link in the header -->
-        <a class="link" href="/CV_Helen_Wang.pdf" download="Helen_Wang_CV.pdf">CV</a>
+        <a class="link" href="/CV_Helen_Wang.pdf" target="_blank" rel="noreferrer noopener">CV</a>
         <button class="link" id="themeToggle" title="Toggle color scheme" style="cursor:pointer;border:none;background:none">🌓</button>
       </nav>
     </div>
@@ -197,7 +215,7 @@
           <a class="btn" href="#experience">See research</a>
           <a class="btn" href="#skills">Skills</a>
           <!-- Updated: direct download link to the CV in repo root -->
-          <a class="btn" href="/CV_Helen_Wang.pdf" download="Helen_Wang_CV.pdf" aria-label="Download CV as PDF">Download CV (PDF)</a>
+          <a class="btn" href="/CV_Helen_Wang.pdf" target="_blank" rel="noreferrer noopener" aria-label="Open CV as PDF">Open CV (PDF)</a>
         </div>
       </div>
       <div class="card" aria-hidden="true" style="background: conic-gradient(from 180deg at 50% 50%, color-mix(in oklab, var(--accent) 40%, transparent), color-mix(in oklab, var(--accent-2) 35%, transparent), color-mix(in oklab, var(--accent) 20%, transparent)); min-height: 280px; display:flex; align-items:center; justify-content:center; border-style: dashed;">
@@ -357,4 +375,3 @@
   </script>
 </body>
 </html>
-
